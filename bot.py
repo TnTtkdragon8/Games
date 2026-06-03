@@ -11,7 +11,9 @@ from discord.ext import commands
 # =========================
 # الإعدادات
 # =========================
-DISCORD_TOKEN = "PUT_YOUR_NEW_BOT_TOKEN_HERE"
+import os
+
+DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
 BASE_URL = "https://vpesports.com/sharedsteam"
 VIDEO_URL = "https://drive.google.com/file/d/1_axgvGNRUJ2Ej05YO4wrtDJvLU7OuQHw/view?usp=sharing"
 START_CODE = "1973"
@@ -307,5 +309,7 @@ async def game_command(interaction: discord.Interaction, name: str):
             embed=build_error_embed(f"حدث خطأ غير متوقع:\n`{e}`")
         )
 
+if __name__ == "__main__":
+    bot.run(DISCORD_TOKEN)
 
-bot.run(DISCORD_TOKEN)
+
